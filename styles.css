@@ -1,0 +1,244 @@
+body {
+    font-family: "Archivo", sans-serif; /* Match bento example font */
+    margin: 0;
+    padding: 10px; /* Reduced padding */
+    background-color: #f0f0f0; /* Lighter background */
+    color: #333; /* Default dark text */
+}
+
+/* Grid container */
+.grid-container {
+  display: grid;
+  /* Map item IDs to grid areas based on image/bento.html structure */
+  grid-template-areas:
+    'contact title title title title' /* Top row */
+    'skills  prof  prof  edu   edu'   /* Middle row */
+    'skills  res   tech  tech  tech';  /* Bottom row */
+  gap: 10px;
+  /* Make grid take up viewport height/width */
+  height: calc(100vh - 20px); /* Subtract body padding */
+  width: calc(100vw - 20px); /* Subtract body padding */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  position: relative; /* Add this */
+}
+
+/* Base style for all grid items */
+.grid-item {
+    /* width: 250px; /* No fixed width needed for grid items */
+    /* margin-bottom: 10px; /* Gap handles spacing */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    background-color: #eee; /* Default background */
+    box-sizing: border-box; 
+    overflow: hidden; 
+    color: #333; 
+    /* display: flex; /* Temporarily remove flex to test height */
+    /* flex-direction: column; /* Temporarily remove flex */
+    /* justify-content: center; /* Temporarily remove flex */
+    /* align-items: center; */ 
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.grid-item.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    z-index: 1000;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.grid-item h1, .grid-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Add some space below headings */
+}
+
+/* Assign items to grid areas */
+#contact-item       { grid-area: contact; background-color: #3e3e3f; color: white; }
+#title-item         { grid-area: title;   background-color: #7dbfda; }
+#skills-item { 
+    grid-area: skills;  
+    background-color: #000000; 
+    color: white; 
+    padding: 0 !important; /* Remove padding */
+    display: flex; /* Enable flexbox */
+    align-items: stretch; /* Stretch content */
+    justify-content: stretch;
+    min-height: 100%; /* Ensure full height */
+    height: 100%; /* Take full height of grid area */
+}
+#professional-item  { grid-area: prof;    background-color: #686fc7; color: white; }
+#education-item     { grid-area: edu;     background-color: #ffa500; }
+#research-item      { grid-area: res;     background-color: #32cd32; }
+#technologies-item  { grid-area: tech;    background-color: #ff1493; color: white; }
+
+/* Adjust specific item styles */
+#title-item h1 {
+     font-size: 40px; 
+     font-weight: 800;
+}
+
+/* Styles for D3 Graph */
+#skills-network {
+    width: 100%;
+    height: 100%;
+    flex: 1; /* Take up all available space */
+    position: relative;
+}
+
+.network-graph {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Position absolutely within container */
+    top: 0;
+    left: 0;
+}
+
+.network-graph svg {
+    width: 100%;
+    height: 100%;
+    display: block; /* Remove any extra space */
+}
+
+/* Node and link styles - Adjust colors for dark/light backgrounds */
+#skills-item .node circle { /* Specific to skills item */
+    fill: #ffffff; /* White nodes on black background */
+}
+
+#skills-item .node text { /* Specific to skills item */
+    fill: #ffffff; /* White text on black background */
+    font-size: 11px;
+    font-weight: 100;
+}
+
+#skills-item .link { /* Specific to skills item */
+    stroke: #888; /* Lighter grey links on black */
+    stroke-width: 1;
+    opacity: 0.4; /* Slightly more visible */
+}
+
+/* Default node/link styles if graph used elsewhere */
+.node circle {
+    fill: #333; /* Default dark nodes */
+}
+
+.node text {
+    fill: #333; /* Default dark text */
+    font-size: 11px;
+    font-weight: 100;
+}
+
+.link {
+    stroke: #aaa; /* Default light grey links */
+    stroke-width: 1;
+    opacity: 0.4;
+}
+
+
+/* Contact links style */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-links p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-links i {
+    width: 20px; /* Ensure icon has width */
+    text-align: center;
+}
+
+/* Ensure links inherit text color */
+.grid-item a {
+    color: inherit; 
+    text-decoration: none;
+}
+.grid-item a:hover {
+    text-decoration: underline;
+}
+
+/* Style for view links specifically if needed */
+.view-link {
+    font-weight: bold;
+    display: inline-block; /* Allow margin/padding */
+    margin-top: 10px;
+}
+
+
+/* Tooltip styles */
+.tooltip {
+    position: absolute;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker tooltip */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    pointer-events: none;
+    z-index: 1000;
+    font-size: 12px;
+}
+
+/* PDF Iframe Style */
+.pdf-iframe {
+    /* display: none; /* Initially hidden - maybe controlled by JS? */
+    width: 100%;
+    height: 300px; /* Default height */
+    border: none;
+    margin-top: 10px;
+}
+
+/* Remove old/unused styles */
+/* Removed .container, .left-column, .right-column, old .grid-container */
+/* Removed .masonry-container */
+/* Removed .bento-item */
+/* Removed specific box styles like .professional-box, .education-box etc. */
+/* Removed .word, #word-cloud */
+/* Removed .box, .box.active */
+/* Removed .graph-container, .node (absolute positioning) - D3 handles this */
+/* Removed JS in CSS comments */
+
+/* Mobile layout - Stack items */
+@media (max-width: 767px) {
+  .grid-container {
+    grid-template-areas:
+      'contact'
+      'title'
+      'skills'
+      'prof'
+      'edu'
+      'res'
+      'tech';
+    height: auto; /* Allow height to adjust to content */
+    width: auto; /* Allow width to adjust */
+    padding: 10px; /* Add padding back for mobile */
+  }
+  .grid-item {
+      /* Adjust item styles for stacking if needed */
+      margin-bottom: 10px; 
+  }
+}
