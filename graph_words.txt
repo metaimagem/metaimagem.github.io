@@ -1,0 +1,240 @@
+Company
+company  
+role  
+start  
+end  
+interviewing [Discourse Analysis][Qualitative Data][Linguistics][Communication][Interviewing][Localization][Research][Ethnography] 
+Education
+research [Qualitative Data][Survey Design][Research and Development][Usability Testing][UX Research][Research][User Experience][Qualitative Research] 
+qualitative research [Qualitative Data][Anthropology][Communication][Interviewing][Ethnography][Qualitative Research] 
+research development [Research and Development] 
+educational technology [Anthropology][Game Design][Research and Development][Usability Testing][User Experience][E-Learning][Educational Technology] 
+e-learning [Survey Design][Research and Development][Collaborative Work][Research][User Experience][Educational Technology] 
+ux research [Linguistics][Anthropology][Strategic Communications][Research and Development][Digital Strategy][Usability Testing][User Experience] 
+Collaboration
+collab  
+collaborative work [Discourse Analysis][Market Analysis][Linguistics][Strategic Communications][Survey Design][Collaborative Work][Information Architecture][Ethnography] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+User Experience
+usability testing [Discourse Analysis][Research and Development][Project Management][Collaborative Work][Usability Testing][UX Research][User Experience][Qualitative Research] 
+user experience [Discourse Analysis][Qualitative Data][Linguistics][Anthropology][User Experience] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Linguistics
+controlled vocabularies [Linguistics][Controlled Vocabularies][Information Architecture] 
+linguistics [Discourse Analysis][Linguistics][Anthropology][Strategic Communications][UX Research][Research][Information Architecture][Ethnography] 
+
+
+
+
+
+
+
+
+
+
+
+Data Analysis
+data analysis [Qualitative Data][Linguistics][Anthropology][Controlled Vocabularies][Digital Strategy][Research][Data Analysis] 
+information architecture [Strategic Communications][Survey Design][Documents][Controlled Vocabularies][Project Management][Data Visualization][Usability Testing][Information Architecture] 
+data visualization [Data Visualization][Information Architecture][Data Analysis] 
+qualitative data [Linguistics][Anthropology][Survey Design][Collaborative Work][Information Architecture][Ethnography][Data Analysis][Qualitative Research] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+uncategorized
+voice user interface [Qualitative Data][Linguistics][Digital Strategy][Voice User Interface (VUI) Design][Usability Testing][UX Research][User Experience] 
+
+
+
+
+
+
+
+Data Visualization
+Digital Strategy
+Research and Development
+
+Voice User Interface (VUI) Design
+
+Strategic Communications
+Educational Technology
+
+
+Controlled Vocabularies
+Collaborative Work
+Interviewing
+
+
+Professional Communication
+
+
+Documents
+
+
+Anthropology
+
+
+Qualitative Research
+Game Design
+Linguistics
+
+
+User Experience
+
+
+Data Analysis
+
+
+Survey Design
+
+
+Ethnography
+
+E-Learning
+
+
+
+Communication
+
+
+
+Research
+Information Architecture
+
+
+
+Consulting
+Localization
+UX Research
+Usability Testing
+
+
+
+Qualitative Data
+Market Analysis
+
+
+Project Management
+HTML
+
+
+
+
+Discourse Analysis
+Research
+STATUS  
+description  
+methods  
+artifacts  
+duration  
+ethnography [Discourse Analysis][Linguistics][Anthropology][Interviewing][Ethnography][User Experience][Data Analysis][Qualitative Research] 
+localization [Discourse Analysis][Market Analysis][Linguistics][Anthropology][Communication][Controlled Vocabularies][Digital Strategy][Localization] 
+html [Communication][Game Design][HTML][E-Learning][Educational Technology] 
+
+
+
+
+
+
+
+Communication
+professional communication [Discourse Analysis][Consulting][Strategic Communications][Communication][Digital Strategy][Project Management][Collaborative Work][Professional Communication] 
+strategic communications [Discourse Analysis][Linguistics][Strategic Communications][Communication][Survey Design][Digital Strategy][UX Research] 
+Projeto
+PROJETO  
+project objective  
+game design [Research and Development][Project Management][User Experience] 
+project management [Project Management] 
+survey design [Discourse Analysis][Market Analysis][Qualitative Data][Linguistics][Digital Strategy][Research] 
+Tecnologia Educacional
+Empresa
+Análise de Dados
+Teste de Usabilidade
+Colaboração
+Vocabulários
+
