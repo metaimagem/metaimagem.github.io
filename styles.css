@@ -12,8 +12,9 @@ body {
   /* Map item IDs to grid areas based on image/bento.html structure */
   grid-template-areas:
     'contact title title title title' /* Top row */
-    'skills  prof  prof  edu   edu'   /* Middle row */
+    'skills  prof  prof  prof   edu'   /* Middle row */
     'skills  res   tech  tech  tech';  /* Bottom row */
+  grid-template-columns: 25% 1.1fr 1.1fr 0.45fr 0.45fr; /* Education -50% */
   gap: 10px;
   /* Make grid take up viewport height/width */
   height: calc(100vh - 20px); /* Subtract body padding */
@@ -86,7 +87,19 @@ body {
     min-height: 100%; /* Ensure full height */
     height: 100%; /* Take full height of grid area */
 }
-#professional-item  { grid-area: prof;    background-color: #686fc7; color: white; }
+#professional-item  { 
+    grid-area: prof;    
+    background: #323639;
+    border-radius: 15px;      /* Add rounded corners */
+    overflow: hidden;
+    padding: 20px 0 0 0; /* Add top padding for the heading, remove side/bottom */
+    box-shadow: none;
+    position: relative;
+    color: white; 
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
 #education-item     { grid-area: edu;     background-color: #ffa500; }
 #research-item      { grid-area: res;     background-color: #32cd32; }
 #technologies-item  { grid-area: tech;    background-color: #ff1493; color: white; }
@@ -101,14 +114,18 @@ body {
 #skills-network {
     width: 100%;
     height: 100%;
-    flex: 1; /* Take up all available space */
+    flex: 1 1 100%;
     position: relative;
+    margin: 0;      /* Remove margin */
+    border: none;   /* Remove border */
+    padding: 0;     /* Remove padding */
+    background: transparent; /* No background */
 }
 
 .network-graph {
-    width: 100%;
+    width: 100%;      /* Fill parent container */
     height: 100%;
-    position: absolute; /* Position absolutely within container */
+    position: absolute;
     top: 0;
     left: 0;
 }
@@ -205,11 +222,15 @@ body {
 
 /* PDF Iframe Style */
 .pdf-iframe {
-    /* display: none; /* Initially hidden - maybe controlled by JS? */
     width: 100%;
-    height: 300px; /* Default height */
+    height: 100%;
     border: none;
-    margin-top: 10px;
+    border-radius: 15px;      /* Match parent rounded corners */
+    background: transparent;
+    margin: 0;
+    display: block;
+    min-height: 300px;        /* Optional: set a minimum height */
+    flex: 1 1 auto;           /* Make iframe fill available space */
 }
 
 /* Remove old/unused styles */
