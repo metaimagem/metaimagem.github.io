@@ -1,16 +1,16 @@
 const nodeToBoxMap = {
-    "Leadership": "professional",
-    "Collaboration": "professional",
-    "Networking": "professional",
-    "Computer Science": "education",
-    "Data Science": "education",
-    "Machine Learning": "education",
-    "Artificial Intelligence": "research",
-    "Natural Language Processing": "research",
-    "Computer Vision": "research",
-    "Python": "technologies",
-    "JavaScript": "technologies",
-    "SQL": "technologies"
+    "Leadership": "professional-item",
+    "Collaboration": "professional-item",
+    "Networking": "contact-item", // Assuming networking links to contact
+    "Computer Science": "education-item",
+    "Data Science": "education-item",
+    "Machine Learning": "education-item",
+    "Artificial Intelligence": "research-item",
+    "Natural Language Processing": "research-item",
+    "Computer Vision": "research-item",
+    "Python": "technologies-item",
+    "JavaScript": "technologies-item",
+    "SQL": "technologies-item"
 };
 
 class SkillsNetwork {
@@ -251,165 +251,179 @@ document.addEventListener('DOMContentLoaded', function() {
     requestAnimationFrame(initializeGraph);
 
     // --- Keep other DOMContentLoaded logic separate ---
-    const boxes = document.querySelectorAll('.grid-container .bento-box');
+    // const boxes = document.querySelectorAll('.grid-container .bento-box'); // Commented out as .bento-box class is not used
     
-    boxes.forEach(box => {
-        box.addEventListener('click', function() {
-            const link = this.querySelector('.view-link');
+    // boxes.forEach(box => {
+    //     box.addEventListener('click', function() {
+    //         const link = this.querySelector('.view-link');
             
-            // If this box is already expanded, collapse it and change text back to "view"
-            if (this.classList.contains('expanded')) {
-                this.classList.remove('expanded');
-                if (link) {
-                    link.textContent = "view"; // Change text back to "View"
-                    link.style.color = "var(--color-link)"; // Set color to link color
-                }
-                return;
-            }
+    //         // If this box is already expanded, collapse it and change text back to "view"
+    //         if (this.classList.contains('expanded')) {
+    //             this.classList.remove('expanded');
+    //             if (link) {
+    //                 link.textContent = "view"; // Change text back to "View"
+    //                 link.style.color = "var(--color-link)"; // Set color to link color
+    //             }
+    //             return;
+    //         }
             
-            // Collapse any other expanded box and change their text back to "view"
-            boxes.forEach(b => {
-                b.classList.remove('expanded');
-                const otherLink = b.querySelector('.view-link');
-                if (otherLink) {
-                    otherLink.textContent = "view"; // Reset other boxes to "View"
-                    otherLink.style.color = "var(--color-link)"; // Set color to link color
-                }
-            });
+    //         // Collapse any other expanded box and change their text back to "view"
+    //         boxes.forEach(b => {
+    //             b.classList.remove('expanded');
+    //             const otherLink = b.querySelector('.view-link');
+    //             if (otherLink) {
+    //                 otherLink.textContent = "view"; // Reset other boxes to "View"
+    //                 otherLink.style.color = "var(--color-link)"; // Set color to link color
+    //             }
+    //         });
             
-            // Expand this box and change text to "Go Back"
-            this.classList.add('expanded');
-            if (link) {
-                link.textContent = "Go Back"; // Change text to "Go Back"
-                link.style.color = "var(--color-text)"; // Set color to white
-            }
-        });
-    });
+    //         // Expand this box and change text to "Go Back"
+    //         this.classList.add('expanded');
+    //         if (link) {
+    //             link.textContent = "Go Back"; // Change text to "Go Back"
+    //             link.style.color = "var(--color-text)"; // Set color to white
+    //         }
+    //     });
+    // });
 
-    initializeExpandableBoxes();
+    // initializeExpandableBoxes(); // Commented out as this seems to be for a different layout
 });
 
 // Example distribution of words into categories
-const wordDistribution = {
-    professional: ["Leadership", "Collaboration", "Networking"],
-    education: ["Computer Science", "Data Science", "Machine Learning"],
-    research: ["Artificial Intelligence", "Natural Language Processing", "Computer Vision"],
-    technologies: ["Python", "JavaScript", "SQL"]
-};
+// const wordDistribution = { // Commented out as it's not used
+//     professional: ["Leadership", "Collaboration", "Networking"],
+//     education: ["Computer Science", "Data Science", "Machine Learning"],
+//     research: ["Artificial Intelligence", "Natural Language Processing", "Computer Vision"],
+//     technologies: ["Python", "JavaScript", "SQL"]
+// };
 
 // Update the content dynamically based on the distribution
-function updateContent() {
-    Object.entries(wordDistribution).forEach(([category, words]) => {
-        const section = document.getElementById(category);
-        const ul = section.querySelector('ul');
-        ul.innerHTML = words.map(word => `<li>${word}</li>`).join('');
-    });
-}
+// function updateContent() {
+//     Object.entries(wordDistribution).forEach(([category, words]) => {
+//         const section = document.getElementById(category);
+//         if (section) { // Check if section exists
+//             const ul = section.querySelector('ul');
+//             if (ul) { // Check if ul exists
+//                 ul.innerHTML = words.map(word => `<li>${word}</li>`).join('');
+//             }
+//         }
+//     });
+// }
 
 // Call this function after loading the PDF and processing the words
-document.addEventListener('DOMContentLoaded', () => {
-    updateContent(); // Call your function here
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     updateContent(); // Call your function here
+// });
 
-console.log(this.wordCloud); // Check if this is null
+// console.log(this.wordCloud); // Check if this is null // Removed as wordCloud is not defined
 
 document.addEventListener('DOMContentLoaded', () => {
-    const professionalBox = document.getElementById('professional');
+    const professionalItemBox = document.getElementById('professional-item'); // Corrected ID
     const pdfIframe = document.getElementById('professional-pdf');
     const link = document.getElementById('professional-link'); // Get the link element
     
-    // Set the title for the Professional box
-    const titleElement = professionalBox.querySelector('h3');
-    titleElement.textContent = "Professional"; // Set title to "Professional"
-
-    // Initially hide the PDF iframe
-    pdfIframe.style.display = "none";
-
-    professionalBox.addEventListener('click', () => {
-        // Check if the PDF iframe is currently displayed
-        if (pdfIframe.style.display === "none" || pdfIframe.style.display === "") {
-            pdfIframe.style.display = "block"; // Show the PDF
-            link.textContent = "Go Back"; // Change link text to "Go Back"
-        } else {
-            pdfIframe.style.display = "none"; // Hide the PDF
-            link.textContent = "View"; // Reset link text to "View"
+    if (professionalItemBox && pdfIframe && link) { // Check if all elements exist
+        // Set the title for the Professional box
+        const titleElement = professionalItemBox.querySelector('h3');
+        if (titleElement) {
+            titleElement.textContent = "Professional"; // Set title to "Professional"
         }
-    });
-});
 
-function updateWordCloud(words) {
-    const wordCloud = document.getElementById('word-cloud');
-    wordCloud.innerHTML = ""; // Clear existing words
+        // Initially hide the PDF iframe
+        pdfIframe.style.display = "none";
 
-    Object.entries(words).forEach(([word, count]) => {
-        const wordElement = document.createElement('span');
-        wordElement.textContent = word;
-        wordElement.className = 'word';
-        wordElement.style.fontSize = `${calculateFontSize(count)}px`; // Adjust font size
-
-        wordCloud.appendChild(wordElement); // Append the word to the container
-    });
-}
-
-// Example function to calculate font size
-function calculateFontSize(count) {
-    return Math.max(10, 20 - count); // Example logic for font size
-}
-
-document.querySelectorAll('.professional-box').forEach(box => {
-    box.addEventListener('click', function() {
-        this.classList.toggle('expanded');
-        console.log('Class toggled:', this.classList.contains('expanded'));  // This will log true or false
-    });
-});
-
-document.querySelectorAll('.box').forEach(box => {
-    box.addEventListener('click', function() {
-        // Remove active class from all boxes
-        document.querySelectorAll('.box').forEach(b => b.classList.remove('active'));
-        
-        // Add active class to the clicked box
-        this.classList.add('active');
-    });
-});
-
-function initializeExpandableBoxes() {
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'overlay';
-    document.body.appendChild(overlay);
-
-    // Get all grid item titles
-    const titles = document.querySelectorAll('.grid-item h1, .grid-item h3');
-    
-    titles.forEach(title => {
-        title.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event bubbling
-            const box = title.closest('.grid-item');
-            
-            // If already expanded, collapse
-            if (box.classList.contains('expanded')) {
-                box.classList.remove('expanded');
-                overlay.classList.remove('active');
+        professionalItemBox.addEventListener('click', (event) => { // Use corrected variable name
+            // Prevent click on link from toggling PDF
+            if (event.target.tagName === 'A' || event.target.id === 'professional-link') {
                 return;
             }
-            
-            // Collapse any other expanded boxes
-            document.querySelectorAll('.grid-item.expanded').forEach(expandedBox => {
-                expandedBox.classList.remove('expanded');
-            });
-            
-            // Expand this box
-            box.classList.add('expanded');
-            overlay.classList.add('active');
+            // Check if the PDF iframe is currently displayed
+            if (pdfIframe.style.display === "none" || pdfIframe.style.display === "") {
+                pdfIframe.style.display = "block"; // Show the PDF
+                link.textContent = "Go Back"; // Change link text to "Go Back"
+            } else {
+                pdfIframe.style.display = "none"; // Hide the PDF
+                link.textContent = "View"; // Reset link text to "View"
+            }
         });
-    });
-    
-    // Close on overlay click
-    overlay.addEventListener('click', () => {
-        document.querySelectorAll('.grid-item.expanded').forEach(box => {
-            box.classList.remove('expanded');
-        });
-        overlay.classList.remove('active');
-    });
-}
+    }
+});
+
+// function updateWordCloud(words) { // Commented out as 'word-cloud' element doesn't exist
+//     const wordCloud = document.getElementById('word-cloud');
+//     if (wordCloud) {
+//         wordCloud.innerHTML = ""; // Clear existing words
+//
+//         Object.entries(words).forEach(([word, count]) => {
+//             const wordElement = document.createElement('span');
+//             wordElement.textContent = word;
+//             wordElement.className = 'word';
+//             wordElement.style.fontSize = `${calculateFontSize(count)}px`; // Adjust font size
+//
+//             wordCloud.appendChild(wordElement); // Append the word to the container
+//         });
+//     }
+// }
+
+// Example function to calculate font size
+// function calculateFontSize(count) { // Commented out as it's part of updateWordCloud
+//     return Math.max(10, 20 - count); // Example logic for font size
+// }
+
+// document.querySelectorAll('.professional-box').forEach(box => { // Commented out as '.professional-box' class doesn't exist
+//     box.addEventListener('click', function() {
+//         this.classList.toggle('expanded');
+//         console.log('Class toggled:', this.classList.contains('expanded'));  // This will log true or false
+//     });
+// });
+
+// document.querySelectorAll('.box').forEach(box => { // Commented out as '.box' class doesn't exist
+//     box.addEventListener('click', function() {
+//         // Remove active class from all boxes
+//         document.querySelectorAll('.box').forEach(b => b.classList.remove('active'));
+//        
+//         // Add active class to the clicked box
+//         this.classList.add('active');
+//     });
+// });
+
+// function initializeExpandableBoxes() { // Commented out as this seems to be for a different layout
+//     // Create overlay
+//     const overlay = document.createElement('div');
+//     overlay.className = 'overlay';
+//     document.body.appendChild(overlay);
+//
+//     // Get all grid item titles
+//     const titles = document.querySelectorAll('.grid-item h1, .grid-item h3');
+//    
+//     titles.forEach(title => {
+//         title.addEventListener('click', (e) => {
+//             e.stopPropagation(); // Prevent event bubbling
+//             const box = title.closest('.grid-item');
+//            
+//             // If already expanded, collapse
+//             if (box.classList.contains('expanded')) {
+//                 box.classList.remove('expanded');
+//                 overlay.classList.remove('active');
+//                 return;
+//             }
+//            
+//             // Collapse any other expanded boxes
+//             document.querySelectorAll('.grid-item.expanded').forEach(expandedBox => {
+//                 expandedBox.classList.remove('expanded');
+//             });
+//            
+//             // Expand this box
+//             box.classList.add('expanded');
+//             overlay.classList.add('active');
+//         });
+//     });
+//    
+//     // Close on overlay click
+//     overlay.addEventListener('click', () => {
+//         document.querySelectorAll('.grid-item.expanded').forEach(box => {
+//             box.classList.remove('expanded');
+//         });
+//         overlay.classList.remove('active');
+//     });
+// }
