@@ -92,7 +92,7 @@ body {
     background: #323639;
     border-radius: 15px;      /* Add rounded corners */
     overflow: hidden;
-    padding: 20px 0 0 0; /* Add top padding for the heading, remove side/bottom */
+    padding: 20px;           /* Match other boxes */
     box-shadow: none;
     position: relative;
     color: white; 
@@ -108,6 +108,13 @@ body {
 #title-item h1 {
      font-size: 40px; 
      font-weight: 800;
+}
+
+#professional-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-left: 0;         /* No extra left padding needed */
+    padding-right: 0;
 }
 
 /* Styles for D3 Graph */
