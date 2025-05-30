@@ -15,6 +15,7 @@ body {
     'skills  prof  prof  prof   edu'   /* Middle row */
     'skills  res   tech  tech  tech';  /* Bottom row */
   grid-template-columns: 25% 1.1fr 1.1fr 0.45fr 0.45fr; /* Education -50% */
+  grid-template-rows: 1fr 2fr 0.7fr; /* Middle row (PDF) is taller, bottom row is shorter */
   gap: 10px;
   /* Make grid take up viewport height/width */
   height: calc(100vh - 20px); /* Subtract body padding */
@@ -115,6 +116,7 @@ body {
     margin-bottom: 10px;
     padding-left: 0;         /* No extra left padding needed */
     padding-right: 0;
+    flex: 0 0 auto;
 }
 
 /* Styles for D3 Graph */
@@ -232,12 +234,18 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 15px;      /* Match parent rounded corners */
+    flex: 1 1 auto;
+    min-height: 0;
+    display: block;
+    border-radius: 0 0 15px 15px; /* Only round bottom corners */
     background: transparent;
     margin: 0;
-    display: block;
-    min-height: 300px;        /* Optional: set a minimum height */
-    flex: 1 1 auto;           /* Make iframe fill available space */
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
 }
 
 /* Remove old/unused styles */
